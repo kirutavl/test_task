@@ -1,7 +1,11 @@
 <div id="main1">
-	slide4
-    </div>
-<div id="main2">
-    slide4
+    BPF Framework and Navigation
+    Here we present navigation functionality of the BPF framework.
+
+    Many SPAs use Sammy.js framework for the navigation. Sammy.js allows to map different URL hashes into various JavaScript functions. When SPA has a lot of different navigation states with some possible hierarchy, such mapping might be different to implement. BPF library, however, implements the mapping between the navigation states and the URL hashes naturally and with very little extra code.
+
+    There is a limitation to the current version of BPF framework, in that it relies on hashchange document event to detect the changes of the hash and change the navigation states of the SPA. IE7 does not support hashchange event so the navigation functionality will on work on it. The share of IE7 browser users is currently smaller than 1% and rapidly declining, so I believe this issue does not have to be addressed.
+
+    Code for BPF framework is located under BPF folder. It is also available from github.com/npolyak/bpf. The only file you need in order to access all of its functionality is bpf.min.js; so far (in the beginning of December 2012, it is pretty small - about 12Kb). This file was obtained by bundling and minification of other JavaScript files which can also be found in BPF folder and to which I will be referring from time to time.
 </div>
         <script> alert("JS from slide works!");</script>

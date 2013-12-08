@@ -1,0 +1,9 @@
+<div>POSTing Complex Data Object to the Server
+
+    GET requests presented in the two previous samples build the query as part of the URL and as such GET requests are perfect when an object you want to send a set of names and values to the server. When a complex JSON object needs to be transferred from the client to the server, POST request should be utilized.
+
+    In this sub-section we will consider the same Cinema model as in the previous one, only the model will be created on the client, sent to the server for modifications, returned by the server back to the client and displayed on the client.
+
+    This sub-section's sample is located under SPA_POSTingObjectToServer solution.
+
+    The server has the same model classes: Cinema and Movie, but Cinema's default constructor is empty since the data is coming from the client. DataController's method ChangeCinemaData changes the data coming from the client by adding another movie "Anne of Planet Mars" to the collection of the movies. Then it returns the modified Cinema object back to the client.</div>

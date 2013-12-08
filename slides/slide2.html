@@ -1,3 +1,13 @@
 <div id="main1">
-	slide2
+    Navigation State
+
+    In its generic form, the browser navigation maps a unique URL to the specific navigation state of the browser application. The "navigation state of the application" determines which pages or regions within the application are shown or hidden or how they are shown.
+
+    The browser interprets the URL and sets the application to the corresponding state. This is required for e.g. enabling the user to navigate the browser application by pressing the browser "back" and "forward" navigation buttons (the browser stores the URLs and when the user presses one of the browser navigation buttons the URL changes and the application state changes correspondingly). Also, this is useful when some external page refers to some specific page (or state) within the application which is not the application's default page.
+
+    The reverse is also true: once the state of the application changes, e.g. because the user presses a tab or a hyperlink to move to a different page, the browser URL should also change to the one corresponding to the new state.
+
+    For the ordinary (non-SPA) HTML applications the navigation comes naturally (the page loads from the server based on the corresponding URL). The SPA applications, however, need to use some JavaScript magic in order to achieve the one-to-one mapping between the URLs and the navigation states of the application. Here we present a new functionality that makes the SPA navigation easier to achieve than by using other already existing frameworks.
+
+    The same navigation concepts can apply to any native single window/multipage applications especially to those built for smart phones and tablets and time permitting, I am going to write more articles about it.
     </div>
