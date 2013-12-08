@@ -40,7 +40,6 @@ require([
     var HomeView = Backbone.View.extend({
         id         : "hello-world-id",
         tagName     : "div",
-        className     : "hello-world",
         template     : null,
         i : 1,
 
@@ -51,8 +50,6 @@ require([
 
         initialize : function(){
             this.home = new HomeModel({
-                name: 'world',
-                id : 1,
                 slide : 1
             });
             //alterntive file load
@@ -76,7 +73,7 @@ require([
                     this.render(data, this.home.attributes.slide);
                 }.bind(this));
                 this.result.error(function(){
-                    console.log("Slides ended");
+                    console.log("Slides end");
                     if (number < 1) {
                         number = 1;
                     } else {
@@ -86,7 +83,7 @@ require([
                 }.bind(this));
             }.bind(this));
 
-            this.template = _.template('<%= name %>');
+            //this.template = _.template('<%= name %>');
         },
 
         changeSlide : function (e) {
