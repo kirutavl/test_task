@@ -1,0 +1,12 @@
+{
+  "author": "Slava Kiruta",
+  "name": "backbone_app",
+  "version": "0.0.1",
+  "devDependencies": {
+    "almond": ">= 0.2.0",
+    "requirejs": ">= 2.1.0"
+  },
+  "dependencies": {
+    "connect": "~2.11.2"
+  }
+}
