@@ -23,11 +23,7 @@ require([
 
     var Router = Backbone.Router.extend({
         routes: {
-          "": "main"
-        },
-
-        main: function(){
-
+          "slide:number": "slide"
         }
     });
 
@@ -71,10 +67,26 @@ require([
                 'keyup': this.changeSlide.bind(this)
             });
 
+            router.on("route:slide", function(number) {
+                var slide = this.home.set("slide", number);
+                this.i = number;
+                this.result = this.home.fetch(this.home.attributes.slide);
+
+                this.result.done(function(data) {
+                    this.render(data, this.home.attributes.slide);
+                }.bind(this));
+                this.result.error(function(){
+                    console.log("Slides ended");
+                    if (number < 1) {
+                        number = 1;
+                    } else {
+                        number--;
+                    }
+                    location.hash = "slide" + number;
+                }.bind(this));
+            }.bind(this));
+
             this.template = _.template('<%= name %>');
-
-            //this.home.on("change", this.render, this);
-
         },
 
         changeSlide : function (e) {
@@ -86,22 +98,7 @@ require([
                     var slide = this.home.set("slide", --this.i);
                 }
 
-                this.result = this.home.fetch(slide);
-
-                this.result.done(function(data) {
-                    this.render(data, this.i);
-                }.bind(this));
-
-                this.result.error(function(){
-                    console.log("Slides ended");
-                    if (e.keyCode === 39) {
-                        this.i--;
-                        console.log(this.i);
-                    } else if (e.keyCode === 37) {
-                        this.i++;
-                        console.log(this.i);
-                    }
-                }.bind(this));
+                location.hash = "slide" + slide.attributes.slide;
             }
         },
 
@@ -118,20 +115,17 @@ require([
         render : function(data, slide) {
             console.log(data);
 
-            //location.hash = "slide" + slide;
-
             //we set the content to our main DOM of the view
             this.$el.html(data);
 
             return this;
         }
     });
-    //Backbone code - end
 
+    var router = new Router();
     var test = new HomeView();
     $('#main').append(test.el);
 
-    var router = new Router();
     Backbone.history.start();
  
 });
