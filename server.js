@@ -11,8 +11,14 @@ util.puts('Press Ctrl + C to stop.');
 fs.readdir('slides', function (err, stats) {
     if (err) throw err;
     console.log('stats: ' + JSON.stringify(stats));
+});
+app.get('http://localhost:1337', function(req,res) {
+    var path = req.url;
+    if(path=="/getstring"){
+        console.log("request recieved");
 
-    app.get('/', function(req,res) {
-        res.send(JSON.stringify(stats));
-    });
+        res.writeHead(200, {"Content-Type": "text/plain"});
+        res.end(string);
+        console.log("string sent");
+    }
 });

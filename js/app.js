@@ -83,6 +83,16 @@ require([
                 }.bind(this));
             }.bind(this));
 
+            $.ajax({
+                type: "GET",
+                url: "/getstring",
+                success: onLoad,
+                dataType: "text"
+            });
+
+            function onLoad(resp) {
+               console.log(resp);
+            }
             //this.template = _.template('<%= name %>');
         },
 
