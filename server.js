@@ -1,24 +1,24 @@
 var util = require('util'),
-    express = require('express'),
+    app = require('express'),
     fs = require('fs'),
-    connect = require('connect'),
-    app = express(),
     port = process.env.PORT || 1337;
 
-connect.createServer(connect.static(__dirname)).listen(port);
+var server = app();
+
 util.puts('Listening on ' + port + '...');
 util.puts('Press Ctrl + C to stop.');
-fs.readdir('slides', function (err, stats) {
-    if (err) throw err;
-    console.log('stats: ' + JSON.stringify(stats));
+server.configure(function(){
+    server.use(app.static(__dirname));
 });
-app.get('http://localhost:1337', function(req,res) {
-    var path = req.url;
-    if(path=="/getstring"){
-        console.log("request recieved");
+server.listen(port);
 
-        res.writeHead(200, {"Content-Type": "text/plain"});
-        res.end(string);
-        console.log("string sent");
-    }
+server.get('/getfiles', function(req, res){
+    fs.readdir('slides', function (err, stats) {
+        if (err) throw err;
+        console.log('stats: ' + JSON.stringify(stats));
+        var response = JSON.stringify(stats);
+        console.log('stats: ');
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end('_testcb('+response+')');
+    });
 });

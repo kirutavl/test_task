@@ -2,4 +2,6 @@
     width: 900px;
     height: auto;
     margin: 100px auto;
+	padding: 16px;
+	box-shadow: inset 1px 1px 8px black,inset -1px -1px 8px black;
 }

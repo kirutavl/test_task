@@ -83,16 +83,21 @@ require([
                 }.bind(this));
             }.bind(this));
 
+            //get all files from slides folder
             $.ajax({
                 type: "GET",
-                url: "/getstring",
-                success: onLoad,
-                dataType: "text"
+                url: "http://localhost:1337/getfiles",
+                dataType: "jsonp",
+                jsonpCallback: "_testcb",
+                success: function (data) {
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        console.log(data[i]);
+                    }
+                }
             });
 
-            function onLoad(resp) {
-               console.log(resp);
-            }
+
             //this.template = _.template('<%= name %>');
         },
 
